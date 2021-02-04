@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
-
+    Rigidbody2D body;
     float horizontal;
     float vertical;
     float moveLimiter = 0.7f;
-    public float runSpeed = 20.0f;
+    public float runSpeed = 10.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-            
+        body = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -31,5 +31,7 @@ public class playerMovement : MonoBehaviour
             horizontal *= moveLimiter;
             vertical *= moveLimiter;
         }
+
+        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
     }
 }
